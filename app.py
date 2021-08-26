@@ -1,5 +1,5 @@
 import os
-from bson import json_util,ObjectId
+from bson import json_util
 import json
 import pymongo
 from flask import Flask, jsonify
@@ -22,7 +22,10 @@ def detail():
         output = []
         for x in mycol.find():
                 output.append({'id' : x['id'],'name':x['name'],'autor':x['autor'],'img':x['url_img'],'score':x['score'],'synopsis':x['synopsis'],'genre':x['genre'],})
+        #Return the data array as JSON format
         response = jsonify({'results':output})
+        #Add Cors 
+        response.headers.add("Access-Control-Allow-Origin","*")
         return response
 
 @app.route('/<id>/')
@@ -32,8 +35,12 @@ def getSoloManga(id):
         output = []
         for x in mydoc:
                 output.append(x)
+        #Convert ObjectId mongodb unique Key for each data, permit to use as unique key for react-native navigation
         conv = json.loads(json_util.dumps(output))
+        #Return the data array as JSON format
         response = jsonify({'results':conv})
+        #Add Cors
+        response.headers.add("Access-Control-Allow-Origin","*")
         return response
 
 if __name__ == "__main__":
