@@ -16,7 +16,7 @@ mycol2 = mydb["explain_moment"]
 
 app = Flask(__name__)
 
-@app.route("/home", methods = ["GET"])
+@app.route("/", methods = ["GET"])
 def detail():
         #List all Mangas plus some details
         output = []
@@ -26,7 +26,7 @@ def detail():
         response.headers.add("Access-Control-Allow-Origin","*")
         return response
 
-@app.route('/home/<id>', methods = ['GET'])
+@app.route('/<id>/', methods = ['GET'])
 def getSoloManga(id):
         #Search More info Manga By Id
         mydoc = mycol2.find({'id':id})
