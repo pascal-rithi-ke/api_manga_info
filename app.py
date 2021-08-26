@@ -16,17 +16,16 @@ mycol2 = mydb["explain_moment"]
 
 app = Flask(__name__)
 
-@app.route("/", methods = ["GET"])
+@app.route("/")
 def detail():
         #List all Mangas plus some details
         output = []
         for x in mycol.find():
                 output.append({'id' : x['id'],'name':x['name'],'autor':x['autor'],'img':x['url_img'],'score':x['score'],'synopsis':x['synopsis'],'genre':x['genre'],})
         response = jsonify({'results':output})
-        response.headers.add("Access-Control-Allow-Origin","*")
         return response
 
-@app.route('/<id>/', methods = ['GET'])
+@app.route('/<id>/')
 def getSoloManga(id):
         #Search More info Manga By Id
         mydoc = mycol2.find({'id':id})
@@ -35,7 +34,6 @@ def getSoloManga(id):
                 output.append(x)
         conv = json.loads(json_util.dumps(output))
         response = jsonify({'results':conv})
-        response.headers.add("Access-Control-Allow-Origin","*")
         return response
 
 if __name__ == "__main__":
