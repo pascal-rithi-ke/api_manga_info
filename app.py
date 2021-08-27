@@ -28,7 +28,7 @@ def detail():
         response.headers.add("Access-Control-Allow-Origin","*")
         return response
 
-@app.route('/<id>/')
+@app.route('/<id>')
 def getSoloManga(id):
         #Search More info Manga By Id
         mydoc = mycol2.find({'id':id})
