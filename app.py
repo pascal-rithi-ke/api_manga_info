@@ -29,6 +29,7 @@ def detail():
                 output.append({'id' : x['id'],'name':x['name'],'autor':x['autor'],'img':x['url_img'],'score':x['score'],'synopsis':x['synopsis'],'genre':x['genre'],})
         #Return the data array as JSON format
         response = jsonify({'results':output})
+        response.headers.add("Access-Control-Allow-Origin","*")
         return response
 
 @app.route('/<id>/')
@@ -42,6 +43,7 @@ def getSoloManga(id):
         conv = json.loads(json_util.dumps(output))
         #Return the data array as JSON format
         response = jsonify({'results':conv})
+        response.headers.add("Access-Control-Allow-Origin","*")
         return response
 
 if __name__ == "__main__":
