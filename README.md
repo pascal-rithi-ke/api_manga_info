@@ -1,2 +1,8 @@
 # api_manga_info
-Simple Web Api for project
+Simple Web Api project host in heroku in Python,Flask,MongoDB, use for react native project in repo " MangaInfo "
+
+all mangas : 
+https://api-manga-info.herokuapp.com
+
+View details :
+https://api-manga-info.herokuapp.com/id
