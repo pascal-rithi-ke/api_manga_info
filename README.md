@@ -5,4 +5,4 @@ all mangas :
 https://api-manga-info.herokuapp.com
 
 View details :
-https://api-manga-info.herokuapp.com/<id>
+https://api-manga-info.herokuapp.com/id
